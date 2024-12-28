@@ -4,12 +4,12 @@ from django.db import migrations
 
 
 def fill_db_owner(apps, schema_editor):
-    flats = apps.get_model('property',
+    Flats = apps.get_model('property',
                            'Flat')
-    owner = apps.get_model('property',
+    Owner = apps.get_model('property',
                            'Owner')
-    for flat in flats.objects.all():
-        owner.objects.get_or_create(
+    for flat in Flats.objects.iterator():
+        Owner.objects.get_or_create(
             name=flat.owner,
             phonenumber=flat.owners_phonenumber,
             pure_phonenumber=flat.owner_pure_phone,
